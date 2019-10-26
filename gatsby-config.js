@@ -1,17 +1,32 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `King of the Hill Store`,
+    description: `Gatsby Stripe Test Store`,
     author: `@gatsbyjs`,
   },
   plugins: [
-    'gatsby-plugin-stripe',
+    "gatsby-plugin-stripe",
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: [
+          "Balance",
+          "BalanceTransaction",
+          "Product",
+          "ApplicationFee",
+          "Sku",
+          "Subscription",
+        ],
+        secretKey: `sk_test_UyE4NlrQbQT5RFNG0RwIIopj00UrYWVHHD`,
+        downloadFiles: true,
       },
     },
     `gatsby-transformer-sharp`,
